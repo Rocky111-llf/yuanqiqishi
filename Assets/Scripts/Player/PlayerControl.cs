@@ -2,23 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecificValue
+public struct SpecificValue
 {
-    public float CurrentValue;
-    public float MaxValue;
-    public float Exist
-    {
-        get { return CurrentValue / MaxValue; }
-    }
+     public float CurrentValue;
+     public float MaxValue;
+
 }
 
 public class PlayerControl : MonoBehaviour,BeAttack
 {
     public static PlayerControl instance;
     //血量，护甲，能量
-    public SpecificValue PlayerHP;
+    public  SpecificValue PlayerHP;
     public SpecificValue PlayerDP;
-    public SpecificValue PlayerMP;
+    //public SpecificValue PlayerMP;
     //移动速度
     public float speed;
     //护甲冷却时长
@@ -51,6 +48,10 @@ public class PlayerControl : MonoBehaviour,BeAttack
         anim = GetComponent<Animator>();
         die = false;
         weapon = null;
+        PlayerHP.MaxValue = 6;
+        PlayerHP.CurrentValue = 6;
+        PlayerDP.MaxValue = 5;
+        PlayerDP.CurrentValue = 5;
         /*weapon = MyWeapon.GetComponent<Weapon>();//武器是否初始化
         weapon.PickUp();
         MyWeapon.transform.SetParent(this.transform);
@@ -154,10 +155,6 @@ public class PlayerControl : MonoBehaviour,BeAttack
             anim.SetBool("die", true);
             die = true;
             GetComponent<Collider2D>().enabled = false;
-        }
-        else
-        {
-            anim.Play("BeAttack");
         }
     }
     //判断周围是否有枪(圆形检测)

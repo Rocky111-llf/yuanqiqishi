@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour,BeAttack
     public bool isopen = false;
     protected Transform TargetPoingt;
     protected EnemyState enemestate;
+    protected Room room;
     protected string role = "Enemy";
 
 
@@ -37,7 +38,7 @@ public class Enemy : MonoBehaviour,BeAttack
             enemestate = EnemyState.Die;
             GetComponent<Animator>().SetBool("die", true);
             GetComponent<Collider2D>().enabled = false;
-
+            room.EnemyDie(this);
         }
         else
         {
@@ -50,9 +51,9 @@ public class Enemy : MonoBehaviour,BeAttack
         Destroy(gameObject);
     }
     //≥ı ºªØ
-    public void Initialzation()
+    public void Initialzation(Room room)
     {
-        Debug.Log("sheji");
+        this.room = room;
         TargetPoingt = GameObject.FindGameObjectWithTag("Player").transform;
     }
 

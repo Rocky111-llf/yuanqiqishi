@@ -137,8 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 700
   DPcd: 2
-  MyWeapon: {fileID: 7989757862474857285, guid: 5e0c525d7e2d4104684f49b393486957, type: 3}
-  weapon: {fileID: 2589779585404367360, guid: 5e0c525d7e2d4104684f49b393486957, type: 3}
+  localscale: 0
 --- !u!95 &611133621276558752
 Animator:
   serializedVersion: 3

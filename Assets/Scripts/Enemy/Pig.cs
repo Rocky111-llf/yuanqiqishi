@@ -62,6 +62,13 @@ public class Pig : Enemy
         }
         MyAI.MoveAI();
     }
-
+    //‘Ï≥……À∫¶
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.GetComponent<BeAttack>() != null)
+        {
+            collision.transform.GetComponent<BeAttack>().BeAttack(attack);
+        }
+    }
 
 }
