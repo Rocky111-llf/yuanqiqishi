@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class GunContral : Weapon
 {
-    public GameControl BulletPrefab;
-    public Transform born;
+    public GameObject BulletPrefab;
+    //public Transform born;
 
-    public float CD = 1;
-    public float timing;
+    public float CD;
+    private float timing = 0;
 
-    public static float WeaponAngle;
+    private float WeaponAngle;
 
 
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class GunContral : Weapon
     // Update is called once per frame
     void FixedUpdate()
     {
-        GunRorate();
+
     }
     
     //Ç¹µÄÐý×ª
@@ -56,8 +56,8 @@ public class GunContral : Weapon
         if (Time.time - timing > CD)
         {
             timing = Time.time;
-            GameObject bullet = Instantiate(BulletPrefab, born.position, born.rotation * Quaternion.AngleAxis(Random.Range(0, shake), Vector3.forward);
-            bullet.GetComponent <Bullet>().
+            GameObject bullet = Instantiate(BulletPrefab, transform.position, transform.rotation * Quaternion.AngleAxis(Random.Range(0, shake), Vector3.forward));
+            bullet.GetComponent<Bullet>().Initialization(attack, role, BulletForce);
         }
     }
 

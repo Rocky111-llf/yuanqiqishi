@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05465da2d2b87e4c92a897603c16718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treasure: {fileID: 1050104271246089237, guid: 5e0c525d7e2d4104684f49b393486957, type: 3}
+  treasure: {fileID: 7989757862474857285, guid: 5e0c525d7e2d4104684f49b393486957, type: 3}
   treasurePosition: {fileID: 5988674793657202746}
   anim1: {fileID: 5988674793150948232}
   anim2: {fileID: 5988674792288585678}

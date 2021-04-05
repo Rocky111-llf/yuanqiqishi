@@ -7,6 +7,7 @@ TagManager:
   - "\u5E95\u9762"
   - Background
   - Environment
+  - Weapon
   layers:
   - Default
   - TransparentFX

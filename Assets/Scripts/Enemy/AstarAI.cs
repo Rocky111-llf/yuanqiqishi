@@ -8,7 +8,7 @@ public class AstarAI : MonoBehaviour
     public Transform TargetPosition;
     public float NextPointDistance;
     public float speed;
-    public float randomRadius;
+    public float RandomRadius;
 
 
 
@@ -21,17 +21,11 @@ public class AstarAI : MonoBehaviour
     public void Start()
     {
         seeker = GetComponent<Seeker>();
-        seeker.StartPath(transform.position, TargetPosition.position, OnPathComplete);
-        TargetLastPosition = TargetPosition.position;
+        TargetLastPosition = transform.position;
     }
 
 
-    public void Update()
-    {
-        MoveAI();
-        UpdatePath();
-
-    }
+    
     //回调函数
     public void OnPathComplete(Path p)
     {
@@ -43,19 +37,26 @@ public class AstarAI : MonoBehaviour
         }
     }
     //判断是否需要更改路径
-    public void UpdatePath()
+    public void UpdatePath(Vector3 targetPosition)
     {
-        if (Vector3.Distance(TargetPosition.position,TargetLastPosition ) > 2)
+        if (Vector3.Distance(targetPosition,TargetLastPosition ) > 1)
         {
-            TargetLastPosition = TargetPosition.position;
-            seeker.StartPath(transform.position, TargetPosition.position, OnPathComplete);
+            TargetLastPosition = targetPosition;
+            seeker.StartPath(transform.position, targetPosition, OnPathComplete);
         }
     }
+    //随机生成路径
+    public void RandomPath()
+    {
+        var point = Random.insideUnitSphere * RandomRadius;
+        point += transform.position;
+        UpdatePath(point);
+    }
    
-
+    //前往目标点
     public void MoveAI()
     {
-        if(path == null)
+        if (path == null)
         {
             return;
         }
@@ -63,7 +64,7 @@ public class AstarAI : MonoBehaviour
         float DistanceToNextPoint;
         while (true)
         {
-            DistanceToNextPoint = Vector3.Distance(transform.position, TargetPosition.position);
+            DistanceToNextPoint = Vector3.Distance(transform.position, path.vectorPath[CurrentPoint]);
             if (DistanceToNextPoint < NextPointDistance)
             {
                 if (CurrentPoint + 1 < path.vectorPath.Count)
@@ -84,7 +85,8 @@ public class AstarAI : MonoBehaviour
 
 
         }
-        var SpeedFactor = isEndTarget ? Mathf.Sqrt(DistanceToNextPoint / NextPointDistance) : 1f;
+        var SpeedFactor = isEndTarget ? Mathf.Sqrt(DistanceToNextPoint / NextPointDistance) : 1f; 
+        Debug.Log("success");
         Vector3 dir = (path.vectorPath[CurrentPoint] - transform.position).normalized;
         Vector3 volcity = dir * SpeedFactor * speed;
         transform.position += volcity * Time.deltaTime;

@@ -31,7 +31,7 @@ public class PlayerControl : MonoBehaviour,BeAttack
     private GameObject MyWeapon;
 
     private Rigidbody2D rb;
-    private Animator anim;
+    public Animator anim;
     public Weapon weapon;
 
     private GameObject WeaponInFloor;
@@ -50,7 +50,13 @@ public class PlayerControl : MonoBehaviour,BeAttack
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         die = false;
-        //weapon = MyWeapon.GetComponent<Weapon>();武器是否初始化
+        weapon = null;
+        /*weapon = MyWeapon.GetComponent<Weapon>();//武器是否初始化
+        weapon.PickUp();
+        MyWeapon.transform.SetParent(this.transform);
+        MyWeapon.transform.localPosition = new Vector3(0, 0, 0);
+        MyWeapon.transform.rotation = Quaternion.identity;
+        weapon.Initialization(gameObject.tag, gameObject.layer);*/
     }
 
      void Update()
@@ -88,6 +94,10 @@ public class PlayerControl : MonoBehaviour,BeAttack
                 DPrestore = false;
             }
         }
+        if (weapon != null)
+        {
+            MyWeapon.GetComponent<GunContral>().GunRorate();
+        }
     }
 
      void FixedUpdate()
@@ -108,11 +118,11 @@ public class PlayerControl : MonoBehaviour,BeAttack
         if(horizontalmove != 0 || verticalmove != 0)
         {
             rb.velocity = new Vector2(horizontalmove * speed * Time.fixedDeltaTime , verticalmove * speed * Time.fixedDeltaTime);
-            anim.SetBool("Running", true);
+            anim.SetBool("run", true);
         }
         else
         {
-            anim.SetBool("Running", false); 
+            anim.SetBool("run", false); 
         }
         //角色方向
         if(facedirection != 0)
@@ -178,8 +188,8 @@ public class PlayerControl : MonoBehaviour,BeAttack
             MyWeapon = WeaponInFloor;
             weapon = MyWeapon.GetComponent<Weapon>();
             weapon.PickUp();
-            MyWeapon.transform.SetParent(transform);
-            MyWeapon.transform.localPosition = new Vector3(0, 0, 0);
+            MyWeapon.transform.SetParent(this.transform,true);
+            MyWeapon.transform.localPosition = new Vector3(0, -0.5f, 0);
             MyWeapon.transform.rotation = Quaternion.identity;
             //注册
             weapon.Initialization(gameObject.tag, gameObject.layer);

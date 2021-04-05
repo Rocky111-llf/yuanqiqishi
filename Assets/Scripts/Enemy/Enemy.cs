@@ -1,88 +1,60 @@
-using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Enemy : MonoBehaviour
+public enum EnemyState
 {
-    protected Animator anim;
-    protected Seeker seeker;
-    protected Path path;
-    protected int CurrentPoint;
-    public Transform TargetPosition;
-    public float AttackRange;
+    Idle,
+    Traking,
+    Stroll,
+    Attack,
+    Die
+}
+
+public class Enemy : MonoBehaviour,BeAttack
+{
+    public float HP;
+    public bool isopen = false;
+    protected Transform TargetPoingt;
+    protected EnemyState enemestate;
+    protected string role = "Enemy";
 
 
-    public float Speed = 6f;
-    public float RandomRadius = 3f;
-    //´ý»ú×´Ì¬
-
-    protected virtual void Start()
+    void Start()
     {
-        anim = GetComponent<Animator>();
-        seeker = GetComponent<Seeker>();
-    }
-    public void DaiJi()
-    {
-        anim.SetBool("isopen", false);
-    }
-    //Ñ²Âß×´Ì¬
-    public void XunLuo()
-    {
-        anim.SetBool("isopen", true);
-        var point = Random.insideUnitSphere * RandomRadius;
-        point += transform.position;
-        seeker.StartPath(transform.position, point, OnPathComplete);
-
-    }
-    //»Øµ÷º¯Êý
-    public void OnPathComplete(Path p)
-    {
-        if (!p.error)
-        {
-            path = p;
-            CurrentPoint = 0;
-        }
-    }
-    //Ç°ÍùÑ²Âßµã
-    public void MoveAI()
-    {
-        if (path == null)
-        {
-            return;
-        }
-        while (true)
-        {
-
-            if (CurrentPoint + 1 < path.vectorPath.Count)
-            {
-                CurrentPoint += 1;
-            }
-            else
-            {
-                break;
-            }
-        }
-        Vector3 dir = (path.vectorPath[CurrentPoint] - transform.position).normalized;
-        Vector3 volcity = dir * Speed;
-        transform.position += volcity * Time.deltaTime;
-    }
-
-    //×·Öð×´Ì¬
-    //·¢¶¯¹¥»÷
-    /*public void Attack()
-    {
-        if (Vector3.Distance(transform.position, TargetPosition.position)<AttackRange)
-        {
-            
-        }
-
         
-    }*/
-    //ËÀÍö×´Ì¬
-    public void Death()
+    }
+
+    void Update()
     {
-        anim.SetBool("death", true);
+        
+    }
+    //ÉËº¦º¯Êý
+    public virtual void BeAttack(float Value)
+    {
+        HP -= Value;
+        if (HP <= 0)
+        {
+            enemestate = EnemyState.Die;
+            GetComponent<Animator>().SetBool("die", true);
+            GetComponent<Collider2D>().enabled = false;
+
+        }
+        else
+        {
+            GetComponent<Animator>().Play("BeAttack");
+        }
+    }
+    //Ïú»Ùº¯Êý
+    private void Die()
+    {
         Destroy(gameObject);
     }
+    //³õÊ¼»¯
+    public void Initialzation()
+    {
+        Debug.Log("sheji");
+        TargetPoingt = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+
 }

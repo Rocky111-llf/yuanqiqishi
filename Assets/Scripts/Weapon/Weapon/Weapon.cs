@@ -9,23 +9,22 @@ public class Weapon : MonoBehaviour
     public float attack;
     public float BulletForce;
     public Vector3 target;
-
+    //Éä»÷
     public virtual void shoot()
     {
 
     }
-    public virtual void UpdateLookAt(Vector3 target)
-    {
-
-    }
+    //³õÊ¼»¯
     public virtual void Initialization(string role,int layer)
     {
         this.role = role;
     }
+    //¼ñÇ¹
     public void PickUp()
     {
         GetComponent<Collider2D>().enabled = false;
     }
+    //¶ªÇ¹
     public void PickDown()
     {
         GetComponent<Collider2D>().enabled = true;
