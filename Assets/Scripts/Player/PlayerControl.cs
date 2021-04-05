@@ -15,7 +15,7 @@ public class SpecificValue
 public class PlayerControl : MonoBehaviour,BeAttack
 {
     public static PlayerControl instance;
-    //血量，护甲，魔法
+    //血量，护甲，能量
     public SpecificValue PlayerHP;
     public SpecificValue PlayerDP;
     public SpecificValue PlayerMP;
@@ -31,13 +31,13 @@ public class PlayerControl : MonoBehaviour,BeAttack
     private GameObject MyWeapon;
 
     private Rigidbody2D rb;
-    public Animator anim;
-    public Weapon weapon;
+    private Animator anim;
+    private Weapon weapon;
 
     private GameObject WeaponInFloor;
     List<GameObject> NearWeapons = new List<GameObject>();
 
-
+    public float localscale;
     private bool die;
 
 
@@ -66,6 +66,7 @@ public class PlayerControl : MonoBehaviour,BeAttack
         //射击
         if (WeaponInFloor != null && Input.GetMouseButtonDown(0))
         {
+            localscale = transform.localScale.x;
             GetWeapon();
         }
         else
@@ -191,6 +192,7 @@ public class PlayerControl : MonoBehaviour,BeAttack
             MyWeapon.transform.SetParent(this.transform,true);
             MyWeapon.transform.localPosition = new Vector3(0, -0.5f, 0);
             MyWeapon.transform.rotation = Quaternion.identity;
+         
             //注册
             weapon.Initialization(gameObject.tag, gameObject.layer);
         }

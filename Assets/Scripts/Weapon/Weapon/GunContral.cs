@@ -35,6 +35,29 @@ public class GunContral : Weapon
 
         //ÎäÆ÷³¯Ïò½Ç¶È
         WeaponAngle = Vector2.Angle(MousePosition - this.transform.position,Vector2.right);
+        if (PlayerControl.instance.localscale > 0)
+        {
+            if (transform.parent.localScale.x == -PlayerControl.instance.localscale)
+            {
+                transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+            }
+            else
+            {
+                transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+            }
+        }
+        else
+        {
+            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+            if (transform.parent.localScale.x == -PlayerControl.instance.localscale)
+            {
+                transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+            }
+            else
+            {
+                transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+            }
+        }
         if (transform.position.y > MousePosition.y)
         {
             WeaponAngle = -WeaponAngle;
