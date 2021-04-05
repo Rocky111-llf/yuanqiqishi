@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public struct SpecificValue
 {
@@ -26,6 +27,10 @@ public class PlayerControl : MonoBehaviour,BeAttack
     //Ω«…´
     private GameObject MyPlayer;
     private GameObject MyWeapon;
+    //UI
+    public Text playerhp;
+    public Text playerdp;
+
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -52,6 +57,8 @@ public class PlayerControl : MonoBehaviour,BeAttack
         PlayerHP.CurrentValue = 6;
         PlayerDP.MaxValue = 5;
         PlayerDP.CurrentValue = 5;
+        playerhp.text = PlayerHP.CurrentValue.ToString();
+        playerdp.text = PlayerDP.CurrentValue.ToString();
         /*weapon = MyWeapon.GetComponent<Weapon>();//Œ‰∆˜ «∑Ò≥ı ºªØ
         weapon.PickUp();
         MyWeapon.transform.SetParent(this.transform);
@@ -90,9 +97,11 @@ public class PlayerControl : MonoBehaviour,BeAttack
         {
             DPtiming = Time.time;
             PlayerDP.CurrentValue += 1;
+            playerdp.text = PlayerDP.CurrentValue.ToString();
             if (PlayerDP.CurrentValue >= PlayerDP.MaxValue)
             {
                 PlayerDP.CurrentValue = PlayerDP.MaxValue;
+                playerdp.text = PlayerDP.CurrentValue.ToString();
                 DPrestore = false;
             }
         }
@@ -140,21 +149,36 @@ public class PlayerControl : MonoBehaviour,BeAttack
         if (PlayerDP.CurrentValue == 0)
         {
             PlayerHP.CurrentValue -= Value;
-        }else if (PlayerDP.CurrentValue < Value)
+            if (PlayerHP.CurrentValue < 0)
+            {
+                PlayerHP.CurrentValue = 0;
+            }
+            playerhp.text = PlayerHP.CurrentValue.ToString();
+        }
+        else if (PlayerDP.CurrentValue < Value)
         {
             Value = Value - PlayerDP.CurrentValue;
             PlayerDP.CurrentValue = 0;
             PlayerHP.CurrentValue -= Value;
+            if (PlayerHP.CurrentValue < 0)
+            {
+                PlayerHP.CurrentValue = 0;
+            }
+            playerdp.text = PlayerDP.CurrentValue.ToString();
+            playerhp.text = PlayerHP.CurrentValue.ToString();
         }
         else
         {
             PlayerDP.CurrentValue -= Value;
+            playerdp.text = PlayerDP.CurrentValue.ToString();
         }
         if (PlayerHP.CurrentValue <= 0)
         {
             anim.SetBool("die", true);
             die = true;
             GetComponent<Collider2D>().enabled = false;
+            Destroy(rb);
+            DPrestore = false;
         }
     }
     //≈–∂œ÷‹Œß «∑Ò”–«π(‘≤–ŒºÏ≤‚)

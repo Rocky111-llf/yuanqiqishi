@@ -6,7 +6,7 @@ public class LanZaoFlower : Enemy
 {
     public Transform pos;
     private Animator anim;
-    private AstarAI MyAI;
+    //private AstarAI MyAI;
     public GameObject BulletPrefab;
 
     public int BulletCount;
@@ -21,7 +21,7 @@ public class LanZaoFlower : Enemy
         enemestate = EnemyState.Idle;
         timing = -CD;
         anim = GetComponent<Animator>();
-        MyAI = GetComponent<AstarAI>();
+        //MyAI = GetComponent<AstarAI>();
 
     }
 
@@ -59,7 +59,7 @@ public class LanZaoFlower : Enemy
         if (Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) < AttackRange && Time.time - timing > CD)
         {
             timing = Time.time;
-            anim.SetBool("rum", true);
+            anim.SetBool("run", true);
             for (int i = 0; i < BulletCount; i++)
             {
                 GameObject go = Instantiate(BulletPrefab, pos.position, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360)));

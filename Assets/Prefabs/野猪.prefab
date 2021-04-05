@@ -197,7 +197,7 @@ MonoBehaviour:
   HP: 20
   isopen: 0
   StrollCD: 1
-  AttackCD: 1
+  AttackCD: 10
   speed: 3
   attack: 3
 --- !u!114 &4761168625815955514
