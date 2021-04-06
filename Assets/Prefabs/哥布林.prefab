@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8598729213430594134}
   - component: {fileID: 8598729213430594135}
   - component: {fileID: 8598729213430594128}
+  - component: {fileID: 1992062776072262945}
   m_Layer: 0
   m_Name: "\u54E5\u5E03\u6797"
   m_TagString: Enemy
@@ -170,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebded73ecb082b24a8e35bdc439e6419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 20
+  HP: 15
   isopen: 0
   AttackRange: 5
   AttackCD: 3
@@ -179,3 +180,31 @@ MonoBehaviour:
   TrackCD: 1
   StrollCD: 1
   MyWeapon: {fileID: 2627338599880452493, guid: d81849c2f6ebdb84d89c257e1c7e87e8, type: 3}
+--- !u!114 &1992062776072262945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8598729213430594129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1

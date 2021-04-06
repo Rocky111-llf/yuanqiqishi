@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 interface BeAttack
 {
@@ -12,20 +14,16 @@ public class GameControl : MonoBehaviour
 {
     public static GameControl instance;
     public Transform WeaponRecycle;
+    public Button restart;
 
     private void Awake()
     {
         instance = this;
     }
     // Start is called before the first frame update
-    void Start()
+    public void GameOver()
     {
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        restart.onClick.AddListener(() => { SceneManager.LoadScene("SampleScene"); });
     }
 }
