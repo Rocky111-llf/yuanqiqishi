@@ -98,11 +98,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   role: "\u7834\u65E7\u7684\u624B\u67AA"
   shake: 5
-  attack: 5
+  attack: 2
   BulletForce: 30
   target: {x: 0, y: 0, z: 0}
   BulletPrefab: {fileID: 220301381814925162, guid: bfc248058c1c4ba43b4139dfecdf7c4c, type: 3}
-  CD: 0.1
+  CD: 0.5
 --- !u!61 &8277871336662912938
 BoxCollider2D:
   m_ObjectHideFlags: 0

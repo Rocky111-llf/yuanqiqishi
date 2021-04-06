@@ -123,11 +123,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849a4904783b2642aeec469ed26817c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 20
+  HP: 10
   isopen: 0
   BulletPrefab: {fileID: 2858360032695604382, guid: 0b44c0d6911709446b4543bbef08a26c, type: 3}
-  BulletCount: 10
-  AttackRange: 10
+  BulletCount: 16
+  AttackRange: 30
   CD: 3
   attack: 3
   BulletForce: 5

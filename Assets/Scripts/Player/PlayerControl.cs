@@ -79,7 +79,7 @@ public class PlayerControl : MonoBehaviour,BeAttack
         }
         else
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0)||Input.GetMouseButton(0))
             {
                 if (weapon != null)
                 {

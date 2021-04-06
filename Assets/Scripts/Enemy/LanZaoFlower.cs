@@ -33,8 +33,8 @@ public class LanZaoFlower : Enemy
             case EnemyState.Idle:
                 Idle();
                 break;
-            case EnemyState.Traking:
-                Traking();
+            case EnemyState.Tracking:
+                Tracking();
                 break;
             case EnemyState.Die:
                 Die();
@@ -51,10 +51,10 @@ public class LanZaoFlower : Enemy
     {
         if (isopen)
         {
-            enemestate = EnemyState.Traking;
+            enemestate = EnemyState.Tracking;
         }
     }
-    private void Traking()
+    private void Tracking()
     {
         if (Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) < AttackRange && Time.time - timing > CD)
         {

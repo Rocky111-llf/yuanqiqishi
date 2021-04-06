@@ -65,7 +65,7 @@ public class Pig : Enemy
     //‘Ï≥……À∫¶
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.GetComponent<BeAttack>() != null)
+        if (collision.transform.GetComponent<BeAttack>() != null && collision.gameObject.tag!="Enemy" )
         {
             collision.transform.GetComponent<BeAttack>().BeAttack(attack);
         }

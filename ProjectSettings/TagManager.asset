@@ -9,6 +9,7 @@ TagManager:
   - Environment
   - Weapon
   - Enemy
+  - Room
   layers:
   - Default
   - TransparentFX

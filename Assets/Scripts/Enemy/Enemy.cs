@@ -4,7 +4,7 @@ using UnityEngine;
 public enum EnemyState
 {
     Idle,
-    Traking,
+    Tracking,
     Stroll,
     Attack,
     Die
@@ -40,10 +40,10 @@ public class Enemy : MonoBehaviour,BeAttack
             GetComponent<Collider2D>().enabled = false;
             room.EnemyDie(this);
         }
-        else
+        /*else
         {
             GetComponent<Animator>().Play("BeAttack");
-        }
+        }*/
     }
     //Ïú»Ùº¯Êý
     private void Die()

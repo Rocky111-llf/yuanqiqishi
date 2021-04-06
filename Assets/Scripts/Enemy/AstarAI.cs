@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AstarAI : MonoBehaviour
 {
-    public Transform TargetPosition;
+    //public Transform TargetPosition;
     public float NextPointDistance;
     public float speed;
     public float RandomRadius;
@@ -86,7 +86,7 @@ public class AstarAI : MonoBehaviour
 
         }
         var SpeedFactor = isEndTarget ? Mathf.Sqrt(DistanceToNextPoint / NextPointDistance) : 1f; 
-        Debug.Log("success");
+        //Debug.Log("success");
         Vector3 dir = (path.vectorPath[CurrentPoint] - transform.position).normalized;
         Vector3 volcity = dir * SpeedFactor * speed;
         transform.position += volcity * Time.deltaTime;
