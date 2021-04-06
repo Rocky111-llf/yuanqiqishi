@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LanZaoFlower : Enemy
 {
-    public Transform pos;
+    //public Transform pos;
     private Animator anim;
     //private AstarAI MyAI;
     public GameObject BulletPrefab;
@@ -62,10 +62,15 @@ public class LanZaoFlower : Enemy
             anim.SetBool("run", true);
             for (int i = 0; i < BulletCount; i++)
             {
-                GameObject go = Instantiate(BulletPrefab, pos.position, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360)));
+                GameObject go = Instantiate(BulletPrefab, transform.position, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360)));
                 go.GetComponent<Bullet>().Initialization(attack, role, BulletForce);
                 go.transform.SetParent(GameControl.instance.WeaponRecycle);
             }
+            anim.SetBool("run", false);
         }
     }
-}
+    public override void BeAttack(float Value)
+    {
+        base.BeAttack(Value);
+    }
+}   

@@ -12,7 +12,11 @@ public class GameControl : MonoBehaviour
 {
     public static GameControl instance;
     public Transform WeaponRecycle;
-    
+
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {

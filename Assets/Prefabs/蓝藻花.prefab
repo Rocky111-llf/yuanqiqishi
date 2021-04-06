@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 697949191593664508}
   m_Layer: 0
   m_Name: "\u84DD\u85FB\u82B1"
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.015837401, y: -0.36137208}
+  m_Offset: {x: 0.013939172, y: -0.38884425}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -109,7 +109,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1068835, y: 0.36634094}
+  m_Size: {x: 0.35910296, y: 0.31139663}
   m_EdgeRadius: 0
 --- !u!114 &2662926286957668875
 MonoBehaviour:
@@ -125,11 +125,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 20
   isopen: 0
-  pos: {fileID: 123624297165123750}
-  BulletPrefab: {fileID: 220301381814925162, guid: bfc248058c1c4ba43b4139dfecdf7c4c, type: 3}
-  BulletCount: 5
+  BulletPrefab: {fileID: 2858360032695604382, guid: 0b44c0d6911709446b4543bbef08a26c, type: 3}
+  BulletCount: 10
   AttackRange: 10
-  CD: 5
+  CD: 3
   attack: 3
   BulletForce: 5
 --- !u!95 &697949191593664508

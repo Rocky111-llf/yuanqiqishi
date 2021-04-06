@@ -6,10 +6,7 @@ public class Bullet : MonoBehaviour
 {
     protected string role;
     protected float attack;
-    void Start()
-    {
-        
-    }
+
 
     void Update()
     {
